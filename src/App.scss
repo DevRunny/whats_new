@@ -77,22 +77,29 @@
     opacity: 0.1;
   }
 
-  .btn {
-    position: relative;
+  .btn-slide {
     width: 48px;
     height: 48px;
     float: right;
     border: none;
     border-radius: 50%;
-    opacity: 0.2;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 0 #E6E6E6, 0 1px 5px rgba(99, 114, 130, 0.15);
-    background: #FFFFFF;
+    background: url("./images/arrow.svg") no-repeat 50% 50% #efefef38;
     cursor: pointer;
 
-  }
+    &:before {
+      background: #FFFFFF;
+    }
 
-  .btn:last-child {
-    margin-right: 20px;
+    &:last-child {
+      transform: rotate(-180deg);
+      margin-right: 20px;
+    }
+
+    &:disabled{
+      opacity: 0.5;
+    }
+
   }
 
   &__title {
@@ -177,5 +184,8 @@
     line-height: 32px;
     cursor: pointer;
 
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }
