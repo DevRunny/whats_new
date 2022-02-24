@@ -1,28 +1,24 @@
-import React, {useState, useEffect} from "react";
-import imgPost1 from "../static/image/desktop/img1.png"
-import imgPost2 from "../static/image/desktop/img2.png"
-import imgPost3 from "../static/image/desktop/img3.png"
+import React from "react";
+import imgPost from "../static/image/desktop/img3.png"
 import arrowDown from "../images/arrow-down.svg"
-import {getPostsThunkCreator} from "../redux/posts/postsReducer";
 
 
 class Main extends React.Component {
     constructor(props) {
         super(props);
         this.state = {readMore: false}
+        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
         this.props.getPostsThunkCreator(this.props.posts)
     }
 
-    readMore = false
-
     handleClick = () => {
-        this.setState({readMore: true})
+        this.setState(prevState => ({
+            readMore: !prevState.readMore
+        }));
     }
-
-
 
     render() {
         const readMore = this.state.readMore
@@ -30,19 +26,19 @@ class Main extends React.Component {
 
         function RenderPosts() {
             return posts.map((post) => {
-                    return (
-                        <li key={post.date}>
-                            <a href={post.url} target="_blank"><img src={imgPost3} alt="img-post"/><span>
+                return (
+                    <li key={post.date}>
+                        <a href={post.url} target="_blank"><img src={imgPost} alt="img-post"/><span>
                                 {post.title}
                                 </span></a>
-                        </li>
-                    );
-                })
+                    </li>
+                );
+            })
         }
 
         function MorePosts() {
             if (readMore) {
-                return <RenderPosts />
+                return <RenderPosts/>
             } else {
                 return null
             }
@@ -52,13 +48,16 @@ class Main extends React.Component {
         return (<div className="main">
             <div className="main__feedback">
                 <div className="container">
-                    <div className="main__reviews"><h2>“I registered on the AidaForm website, having stumbled upon one
+                    <ul>
+                    <li><div className="main__reviews"><h2>“I registered on the AidaForm website, having stumbled upon one
                         of
                         the form templates, which I really liked. My first form, which is still active by the way, was
                         published 20 minutes after I found the AidaForm website and created an account!”</h2>
                     </div>
+
+                        <div className="main__name-reviewer"><h3><b>Ben Johnson,</b> web-store owner</h3></div></li>
+                    </ul>
                     <div className="main__balloon"/>
-                    <div className="main__name-reviewer"><h3><b>Ben Johnson,</b> web-store owner</h3></div>
                     <button className="btn-slide"/>
                     <button disabled="disabled" className="btn-slide"/>
                 </div>
@@ -75,14 +74,14 @@ class Main extends React.Component {
                             </li>
                         );
                     })}
-                    <MorePosts readMore={false}/>
+                    <MorePosts/>
                 </ul>
             </div>
-            <button id="read-more" className="main__rm-btn" onClick={(e) => {
-                this.handleClick()
-                e.target.style.display = "none"
-            }}>Read More<img src={arrowDown}
-                                                                          alt="arrow-down"/>
+            <button id="read-more" className="main__rm-btn" onClick={
+                this.handleClick}>{this.state.readMore ? 'Hide' : 'Read More'}
+                <img src={arrowDown}
+                     style={this.state.readMore ? {transform: "rotate(180deg)"} : {transform: "none"}}
+                     alt="arrow-down"/>
             </button>
         </div>);
     };
