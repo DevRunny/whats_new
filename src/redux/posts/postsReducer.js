@@ -1,49 +1,55 @@
 import {getPosts} from "../../api/posts";
 
-const MORE_POSTS = "MORE_POSTS";
+const GET_MORE_POSTS = "GET_MORE_POSTS"
 
-export const getPostsThunkCreator = () => {
+const getMorePostsActionCreator = (newPosts) => {
+    return {
+        type: GET_MORE_POSTS,
+        payload: newPosts
+    }
+}
+
+export const getPostsThunkCreator = (newPosts) => {
     return (dispatch) => {
-        getPosts()
-            .then((posts) => {
-                dispatch({
-                    type: MORE_POSTS,
-                    payload: posts
-                    }
-                )
-            }).catch((error) => {
-            console.log(error)
-        })
+        getPosts(newPosts)
+            .then((resp) => {
+                dispatch(getMorePostsActionCreator(resp))
+            })
     }
 }
 
 
-const initialState = [
+const initialState = {
+    firstPosts: [
     {
+        id: 1,
+        src: require("../../static/image/desktop/img1.png"),
         title: "Instagram FAQ — All You Need To Know",
         url: "https://blog.combin.com/instagram-faq-all-you-need-to-know-bb2559ac606b",
         date: Date.now()
     },
     {
+        id: 2,
+        src: require("../../static/image/desktop/img2.png"),
         title: "DMEXCO 2019 — Meet Combin in Cologne",
         url: "https://blog.combin.com/dmexco-2019-meet-combin-in-cologne-b845529a1e63",
         date: Date.now()
     },
     {
+        id: 3,
+        src: require("../../static/image/desktop/img3.png"),
         title: "Limits Display, New User Preview, New Filters, and Many More Features — All about Combin 2.1",
         url: "https://blog.combin.com/limits-display-new-user-preview-new-filters-and-many-more-features-all-about-combin-2-1-d78713383da7",
         date: Date.now()
     },
-];
+    ],
+}
+
 
 export const postsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case MORE_POSTS: {
-            const posts = action.payload
-            const allPosts = [].concat(state, posts)
-            return {
-                ...allPosts
-            }
+        case GET_MORE_POSTS: {
+            return { ...state, newPosts: action.payload}
         }
 
         default:

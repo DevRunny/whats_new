@@ -124,6 +124,7 @@
       padding: 0;
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
       list-style-type: none;
 
       li {
@@ -135,6 +136,7 @@
         height: 650px;
         background: #FFFFFF;
         border-radius: 12px;
+        margin-bottom: 12px;
 
         img {
           margin-top: 12px;
