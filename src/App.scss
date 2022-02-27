@@ -82,10 +82,11 @@
     opacity: 0.1;
   }
 
-  .btn-slide {
+  .btn {
+    position: absolute;
     width: 48px;
     height: 48px;
-    float: right;
+    bottom: 144px;
     border: none;
     border-radius: 50%;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 0 #E6E6E6, 0 1px 5px rgba(99, 114, 130, 0.15);
@@ -96,16 +97,20 @@
       background: #FFFFFF;
     }
 
-    &:last-child {
-      transform: rotate(-180deg);
-      margin-right: 20px;
-    }
-
     &:disabled{
       opacity: 0.5;
     }
-
   }
+
+  .btn-next-slide {
+    right: 80px;
+  }
+
+  .btn-prev-slide {
+    right: 150px;
+    transform: rotate(-180deg);
+  }
+
 
   &__title {
     margin-top: 80px;

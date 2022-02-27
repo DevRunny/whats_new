@@ -1,7 +1,7 @@
 export const getPosts = async () => {
-    const response = await (await fetch('blog_posts.json')).json();
+  const response = await (await fetch("blog_posts.json")).json();
 
-    if (response) {
-        return response
-    }
-}
+  if (response) {
+    return response;
+  }
+};

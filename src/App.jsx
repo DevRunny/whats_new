@@ -1,15 +1,14 @@
-import React from 'react';
-// import logo from './logo.svg';
-import './App.scss';
-import "./font.css"
+import React from "react";
+import "./App.scss";
+import "./font.css";
 import MainContainer from "./components/MainContainer";
 
 function App() {
-    return (
-        <div className="App">
-            <MainContainer/>
-        </div>
-    );
+  return (
+    <div className="App">
+      <MainContainer />
+    </div>
+  );
 }
 
 export default App;
