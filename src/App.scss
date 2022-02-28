@@ -27,6 +27,8 @@
 
   &__feedback {
     position: relative;
+    display: flex;
+    align-items: center;
     width: 1416px;
     height: 700px;
     margin-top: 12px;
@@ -41,7 +43,6 @@
   }
 
   &__reviews {
-    margin-top: 184px;
     width: 824px;
 
     h2 {
