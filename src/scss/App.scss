@@ -18,6 +18,7 @@
 
 .main {
   max-width: 1440px;
+  padding: 12px;
   margin: auto;
   background-color: #F7F7F8;
   display: flex;
@@ -29,7 +30,7 @@
     position: relative;
     display: flex;
     align-items: center;
-    width: 1416px;
+    width: 100%;
     height: 700px;
     margin-top: 12px;
     margin-bottom: 12px;
@@ -43,7 +44,7 @@
   }
 
   &__reviews {
-    width: 824px;
+    width: 826px;
 
     h2 {
       font-family: ProximaNova Regular, serif;
@@ -61,6 +62,7 @@
     margin-top: 32px;
 
     h3 {
+      display: flex;
       font-family: ProximaNova Light, serif;
       font-style: normal;
       font-weight: normal;
@@ -69,6 +71,10 @@
       letter-spacing: 0.2px;
       color: white;
 
+      span {
+        font-weight: 600;
+        margin-right: 5px;
+      }
     }
   }
 
@@ -85,21 +91,36 @@
 
   .btn {
     position: absolute;
+    display: inline-block;
     width: 48px;
     height: 48px;
     bottom: 144px;
     border: none;
     border-radius: 50%;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 0 #E6E6E6, 0 1px 5px rgba(99, 114, 130, 0.15);
-    background: url("./images/arrow.svg") no-repeat 50% 50% #efefef38;
+    background: no-repeat 50% 50% #efefef38;
     cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0 40px 40px rgba(10, 0, 32, 0.08);
+      border-radius: 32px;
+    }
 
     &:before {
       background: #FFFFFF;
     }
 
-    &:disabled{
+    &:disabled {
       opacity: 0.5;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+
+    &:focus {
+      border: 1px solid #6527D9;
+      filter: drop-shadow(0px 20px 40px rgba(99, 114, 130, 0.08));
     }
   }
 
@@ -109,7 +130,9 @@
 
   .btn-prev-slide {
     right: 150px;
-    transform: rotate(-180deg);
+    img {
+      transform: rotate(-180deg);
+    }
   }
 
 
@@ -128,7 +151,7 @@
   }
 
   &__posts {
-    width: 1416px;
+    width: 100%;
 
     ul {
       position: relative;
@@ -147,10 +170,10 @@
         height: 650px;
         background: #FFFFFF;
         border-radius: 12px;
+        padding-top: 12px;
         margin-bottom: 12px;
 
         img {
-          margin-top: 12px;
           width: 440px;
           height: 487px;
         }
@@ -159,10 +182,10 @@
           display: flex;
           flex-direction: column;
           justify-content: center;
-          padding-top: 20px;
-          padding-left: 40px;
-          padding-right: 40px;
-          text-align: center;
+          margin-top: 20px;
+          margin-left: 40px;
+          margin-right: 40px;
+          margin-bottom: 20px;
           width: 370px;
           height: 111px;
         }
@@ -200,6 +223,10 @@
 
     &:hover {
       opacity: 0.8;
+    }
+
+    &:disabled {
+      opacity: 0.5;
     }
   }
 }

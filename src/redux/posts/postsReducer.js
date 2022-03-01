@@ -9,9 +9,9 @@ const getMorePostsActionCreator = (newPosts) => {
   }
 }
 
-export const getPostsThunkCreator = (newPosts) => {
+export const getPostsThunkCreator = () => {
   return (dispatch) => {
-    getPosts(newPosts)
+    getPosts()
         .then((resp) => {
           dispatch(getMorePostsActionCreator(resp))
         })

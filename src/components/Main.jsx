@@ -1,56 +1,28 @@
 import React, {Component} from "react";
-import imgPost from "../static/image/desktop/img3.png";
 import arrowDown from "../images/arrow-down.svg";
 import CarouselContainer from "./Feedback/CarouselContainer";
+import PostsContainer from "./Posts/PostsContainer";
 
 class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {readMore: false};
     this.handleClick = this.handleClick.bind(this);
-    this.loadPosts = {isLoaded: "disabled"};
   }
 
   componentDidMount() {
-    this.props.getPostsThunkCreator(this.props.posts);
-    this.loadPosts = "none";
+    this.props.getPostsThunkCreator(this.props.firstPosts);
   }
 
   handleClick = () => {
     this.setState((prevState) => ({
       readMore: !prevState.readMore,
     }));
-    this.props.posts.sort((a, b) => {
-      const dateA = new Date(a.date),
-          dateB = new Date(b.date);
-      return dateB - dateA;
-    });
   };
 
   render() {
     const readMore = this.state.readMore;
-    const posts = this.props.posts;
-
-    function RenderPosts() {
-      return posts.map((post, index) => {
-        return (
-            <li key={index}>
-              <a href={post.url} target="_blank" rel="noreferrer">
-                <img src={imgPost} alt="img-post"/>
-                <span>{post.title}</span>
-              </a>
-            </li>
-        );
-      });
-    }
-
-    function MorePosts() {
-      if (readMore) {
-        return <RenderPosts/>;
-      } else {
-        return null;
-      }
-    }
+    const postsReady = this.props.posts
 
     return (
         <div className="main">
@@ -75,11 +47,11 @@ class Main extends Component {
                     </li>
                 );
               })}
-              <MorePosts/>
+              {readMore ? <PostsContainer/> : null}
             </ul>
           </div>
           <button
-              disabled={this.loadPosts.isLoaded}
+              disabled={!postsReady}
               id="read-more"
               className="main__rm-btn"
               onClick={this.handleClick}

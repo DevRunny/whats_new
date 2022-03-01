@@ -1,7 +1,6 @@
-import React from "react";
-import Carousel from "./Carousel";
-import {changeCurrentSlideActionCreator, getFeedbackThunkCreator} from "../../redux/feedback/feedbackReducer";
 import {connect} from "react-redux";
+import CarouselComponent from "./CarouselComponent";
+import {changeCurrentSlideActionCreator, getFeedbackThunkCreator} from "../../redux/feedback/feedbackReducer";
 import {newActiveSlideActionCreator} from "../../redux/feedback/feedbackReducer";
 
 const mapStateToProps = (state) => {
@@ -15,6 +14,6 @@ const CarouselContainer = connect (mapStateToProps, {
   getFeedbackThunkCreator,
   newActiveSlideActionCreator,
   changeCurrentSlideActionCreator
-}) (Carousel)
+}) (CarouselComponent)
 
 export default CarouselContainer;

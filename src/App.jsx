@@ -1,5 +1,6 @@
 import React from "react";
-import "./App.scss";
+import "./scss/App.scss";
+import './scss/Responsive.scss'
 import "./font.css";
 import MainContainer from "./components/MainContainer";
 

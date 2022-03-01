@@ -1,0 +1,103 @@
+@media (max-width: 375px) {
+  .main {
+    max-width: 320px;
+
+    &__feedback {
+      width: 296px;
+      display: table;
+      height: 520px;
+      padding-bottom: 140px;
+    }
+
+    &__reviews {
+      width: 100%;
+
+      h2 {
+        font-family: ProximaNova Light, serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 120%;
+        letter-spacing: 0.8px;
+        color: white;
+        padding-top: 20px;
+        padding-left: 6px;
+        padding-right: 6px;
+      }
+    }
+
+    &__name-reviewer {
+      position: absolute;
+      bottom: 80px;
+      left: 16px;
+
+      h3 {
+        display: block;
+        font-size: 16px;
+        line-height: 140%;
+
+        span {
+          margin-right: 0;
+        }
+      }
+    }
+
+    &__balloon {
+      display: none;
+    }
+
+    .btn {
+      bottom: 16px;
+    }
+
+    .btn-next-slide {
+      left: 84px;
+    }
+
+    .btn-prev-slide {
+      left: 16px;
+    }
+
+    &__title {
+      margin-top: 32px;
+      margin-bottom: 25px;
+
+      h1 {
+        font-size: 24px;
+      }
+    }
+
+    &__posts {
+      width: 296px;
+
+      ul {
+
+        li {
+          width: 296px;
+          height: 422px;
+
+          img {
+            margin-top: 8px;
+            width: 280px;
+            height: 310px;
+          }
+
+          span {
+            width: 280px;
+            height: 64px;
+          }
+
+          a {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+
+    &__rm-btn {
+      margin-top: 24px;
+      margin-bottom: 40px;
+      font-size: 18px;
+    }
+  }
+}
