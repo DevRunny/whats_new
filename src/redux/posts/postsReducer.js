@@ -1,23 +1,22 @@
-import {getPosts} from "../../api/posts";
+import { getPosts } from "../../api/posts";
 
-const GET_MORE_POSTS = "GET_MORE_POSTS"
+const GET_MORE_POSTS = "GET_MORE_POSTS";
 
 const getMorePostsActionCreator = (newPosts) => {
   return {
     type: GET_MORE_POSTS,
     payload: newPosts
-  }
-}
+  };
+};
 
 export const getPostsThunkCreator = () => {
   return (dispatch) => {
     getPosts()
-        .then((resp) => {
-          dispatch(getMorePostsActionCreator(resp))
-        })
-  }
-}
-
+      .then((resp) => {
+        dispatch(getMorePostsActionCreator(resp));
+      });
+  };
+};
 
 const initialState = {
   firstPosts: [
@@ -43,20 +42,18 @@ const initialState = {
       date: Date.now()
     },
   ],
-}
-
+};
 
 const postsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_MORE_POSTS: {
-      return {...state, newPosts: action.payload}
+      return { ...state, newPosts: action.payload };
     }
 
     default:
-      return state
+      return state;
 
   }
-}
-
+};
 
 export default postsReducer;
